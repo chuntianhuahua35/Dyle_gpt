@@ -7,6 +7,7 @@ def process_line_train(idx):
     #???????
     # if mode != "train":
     #     return []
+    print('idx----------------------------')
     print(idx)
     if idx == 177:
         return []
@@ -16,7 +17,7 @@ def process_line_train(idx):
         line = f.read()
         line = line.lstrip('[')
         line = line.rstrip(']\n')
-        print(line)
+        # print(line)
         line_list = [int(x) for x in line.split(',')]
         # print(line_list)
         return line_list
