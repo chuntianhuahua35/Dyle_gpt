@@ -115,7 +115,7 @@ def get_oracle(text, ref):
 
 mode = "train"
 # Change to own path
-path = '/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Academic/jsonl/{}.jsonl'.format(mode)
+path = '/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Committee/jsonl/{}.jsonl'.format(mode)
 data = []
 with open(path) as f:
     for line in f:
@@ -155,17 +155,17 @@ def extract_oracle(samples):
         oracle, indexes = get_oracle(text, ref)
 
         # Obtain oracle index
-        with open('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Academic/greedy/ref_{}/{}.ref'.format(mode, idx), 'w') as f:
+        with open('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Committee/greedy/ref_{}/{}.ref'.format(mode, idx), 'w') as f:
             for sent in sent_tokenize(ref):
                 print(sent, file=f)
     
         # Obtain gold summary reference
-        with open('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Academic/greedy/dec_{}/{}.dec'.format(mode, idx), 'w') as f:
+        with open('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Committee/greedy/dec_{}/{}.dec'.format(mode, idx), 'w') as f:
             for sent in sent_tokenize(oracle):
                 print(sent, file=f)
 
         # Obtain decoded oracle
-        with open('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Academic/greedy/index_{}/{}.dec'.format(mode, idx), 'w') as f:
+        with open('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Committee/greedy/index_{}/{}.dec'.format(mode, idx), 'w') as f:
             print(indexes, file=f)
 
         print(indexes)
@@ -187,5 +187,5 @@ with ProcessPoolExecutor(max_workers=num_workers) as executor:
     results = [future.result() for future in tqdm(futures)]
 
 print('Start evaluating ROUGE score')
-eval_rouge('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Academic/greedy/dec_{}'.format(mode), 
-            '/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Academic/greedy/ref_{}'.format(mode))
+eval_rouge('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Committee/greedy/dec_{}'.format(mode), 
+            '/home/zixuandeng_alan/Dyle_chatgpt/QMSum/Committee/greedy/ref_{}'.format(mode))
