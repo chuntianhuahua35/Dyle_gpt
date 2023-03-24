@@ -7,6 +7,7 @@ def process_line_train(idx):
     #???????
     # if mode != "train":
     #     return []
+    # if idx == 177:
 
     # Update the path
     with open('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/ALL/greedy/index_{}/{}.dec'.format(mode, idx), 'r') as f:
@@ -15,6 +16,7 @@ def process_line_train(idx):
         line = line.rstrip(']\n')
         print(line)
         line_list = [int(x) for x in line.split(',')]
+        print(line_list)
         return line_list
 
 # Download the QMSum datasets and set the path
