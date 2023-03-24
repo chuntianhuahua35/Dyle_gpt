@@ -1,7 +1,7 @@
 import json
 from nltk.tokenize import word_tokenize
 
-mode = "val"
+mode = "train"
 
 def process_line_train(idx):
     #???????
@@ -9,7 +9,7 @@ def process_line_train(idx):
     #     return []
 
     # Update the path
-    with open('/home/zixuandeng_alan/Dyle_clean/QMSum/ALL/greedy/index_{}/{}.dec'.format(mode, idx), 'r') as f:
+    with open('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/ALL/greedy/index_{}/{}.dec'.format(mode, idx), 'r') as f:
         line = f.read()
         line = line.lstrip('[')
         line = line.rstrip(']\n')
@@ -17,7 +17,7 @@ def process_line_train(idx):
         return line_list
 
 # Download the QMSum datasets and set the path
-path = '/home/zixuandeng_alan/Dyle_clean/QMSum/ALL/jsonl/{}.jsonl'.format(mode)
+path = '/home/zixuandeng_alan/Dyle_chatgpt/QMSum/ALL/jsonl/{}.jsonl'.format(mode)
 data = []
 with open(path) as f:
     for line in f:
@@ -41,7 +41,7 @@ for i in range(len(data)):
     print('{}: Finished {} pairs'.format(mode, idx))
 
 # Update the path
-with open('/home/zixuandeng_alan/Dyle_clean/QMSum/ALL/greedy/{}_oracle.jsonl'.format(mode), 'w') as outfile:
+with open('/home/zixuandeng_alan/Dyle_chatgpt/QMSum/ALL/greedy/{}_oracle.jsonl'.format(mode), 'w') as outfile:
     for entry in data:
         json.dump(entry, outfile)
         outfile.write('\n')
