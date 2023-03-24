@@ -7,7 +7,8 @@ def process_line_train(idx):
     #???????
     # if mode != "train":
     #     return []
-    if idx == 177 or idx ==1346:
+    print(idx)
+    if idx == 177:
         return []
 
     # Update the path
