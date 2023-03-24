@@ -13,6 +13,7 @@ def process_line_train(idx):
         line = f.read()
         line = line.lstrip('[')
         line = line.rstrip(']\n')
+        print(line)
         line_list = [int(x) for x in line.split(',')]
         return line_list
 
